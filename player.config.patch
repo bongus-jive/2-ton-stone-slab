@@ -1,0 +1,7 @@
+[
+  {
+    "op": "add",
+    "path": "/genericScriptContexts/2tonslabofstone",
+    "value": "/pat/2tonslab/slab_player.lua"
+  }
+]
