@@ -1,4 +1,6 @@
 function init()
+	status.clearPersistentEffects("die")
+	
 	uuid = sb.makeUuid()
 	player.setProperty("pat_2tonslab_uuid", uuid)
 	
@@ -15,12 +17,6 @@ function init()
 				world.spawnProjectile("pat_2tonslab", {m[1], y}, player.id(), {0,0}, false, {myNuts = math.huge})
 				
 			elseif a == "kill" then
-				status.applySelfDamageRequest({
-					damage = math.huge,
-					damageType = "IgnoresDef",
-					damageSourceKind = "hammer",
-					sourceEntityId = player.id()
-				})
 				status.setPersistentEffects("die", {{stat = "maxHealth", effectiveMultiplier = 0}})
 			end
 		end
