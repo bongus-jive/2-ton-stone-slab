@@ -1,0 +1,11 @@
+[
+  {
+    "op": "add",
+    "path": "/items/patman:2tonslab",
+    "value": {
+      "label": "A Deal",
+      "icon": "/pat/2tonslab/icon.png",
+      "action" : [ "exec", "/pat/2tonslab/quickbar.lua" ]
+    }
+  }
+]

@@ -1,12 +1,8 @@
 function init()
 	status.clearPersistentEffects("die")
 	
-	uuid = sb.makeUuid()
-	player.setProperty("pat_2tonslab_uuid", uuid)
-	
-	pane = root.assetJson("/pat/2tonslab/window/slab.sussy")
-	pane.uuid = uuid
-	player.interact("ScriptPane", pane)
+	slabPane()
+	message.setHandler("pat_2tonslab_pane", slabPane)
 
 	message.setHandler("pat_2tonslab", function(_, isLocal, a)
 		if isLocal then
@@ -27,4 +23,13 @@ function init()
 			end
 		end
 	end)
+end
+
+function slabPane()
+	local uuid = sb.makeUuid()
+	player.setProperty("pat_2tonslab_uuid", uuid)
+	
+	pane = root.assetJson("/pat/2tonslab/window/slab.sussy")
+	pane.uuid = uuid
+	player.interact("ScriptPane", pane)
 end
