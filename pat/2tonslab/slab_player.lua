@@ -17,7 +17,13 @@ function init()
 				world.spawnProjectile("pat_2tonslab", {m[1], y}, player.id(), {0,0}, false, {myNuts = math.huge})
 				
 			elseif a == "kill" then
-				status.setPersistentEffects("die", {{stat = "maxHealth", effectiveMultiplier = 0}})
+				status.applySelfDamageRequest({
+					damage = status.resourceMax("health"),
+					damageType = "IgnoresDef",
+					damageSourceKind = "hammer",
+					sourceEntityId = player.id()
+				})
+				status.addEphemeralEffect("pat_2tonslab_effect")
 			end
 		end
 	end)

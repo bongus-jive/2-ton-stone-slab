@@ -1,0 +1,6 @@
+{
+  "name" : "pat_2tonslab_effect",
+  "defaultDuration" : 1,
+  "effectConfig" : {},
+  "scripts" : ["slab_effect.lua"]
+}
