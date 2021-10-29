@@ -10,7 +10,7 @@ function init()
 
 	message.setHandler("pat_2tonslab", function(_, isLocal, a)
 		if isLocal then
-			if a == true then
+			if a == "spawn" then
 				local m = mcontroller.position()
 				local y = math.min(m[2] + 150, world.size()[2] - 1)
 				

@@ -1,7 +1,7 @@
 function init()
 	uuid = config.getParameter("uuid")
 	
-	canvYes = {c = widget.bindCanvas("yes"), data = true}
+	canvYes = {c = widget.bindCanvas("yes"), data = "spawn"}
 	canvNo = {c = widget.bindCanvas("no")}
 	
 	function canvYes:draw(p) draw(self.c, "yes", p) end

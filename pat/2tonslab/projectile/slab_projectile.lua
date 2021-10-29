@@ -13,11 +13,7 @@ function update(dt)
 		mcontroller.setXPosition(tpos[1])
 		
 		if targetHit or tpos[2] + 1 > mcontroller.position()[2] then
-			if not targetHit then
-				targetHit = true
-				hitAction()
-				world.sendEntityMessage(target, "pat_2tonslab", "kill")
-			end
+			if not targetHit then hit(target) end
 		else
 			projectile.setTimeToLive(1.5)
 		end
@@ -28,6 +24,7 @@ function hit(id)
 	if id == target and not targetHit then
 		targetHit = true
 		hitAction()
+		world.sendEntityMessage(target, "pat_2tonslab", "kill")
 	end
 end
 
