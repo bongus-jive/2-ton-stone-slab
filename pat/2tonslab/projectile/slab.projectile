@@ -3,9 +3,10 @@
 	"image" : "slab.png",
 	"renderLayer" : "player+1",
 	"orientationLocked" : true,
+	"piercing" : true,
+	"speed" : 0,
 	"bounces" : -1,
 	"timeToLive" : 1.5,
-	"speed" : 0,
 	
 	"damageType" : "IgnoresDef",
 	"damageTeam" : {"type" : "indiscriminate"},
