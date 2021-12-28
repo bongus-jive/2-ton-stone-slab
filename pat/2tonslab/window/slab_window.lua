@@ -22,10 +22,6 @@ function draw(canvas, image, a)
 	canvas:drawImage("/pat/2tonslab/window/buttons.png:"..image..(a and "_push" or ""), {0, 0}, 0.2)
 end
 
-function hover(canvas)
-
-end
-
 function click(canvas, position, button, isButtonDown)
 	if button ~= 0 then return end
 	
