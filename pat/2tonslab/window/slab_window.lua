@@ -12,7 +12,7 @@ function init()
 end
 
 function update(dt)
-	if uuid ~= player.getProperty("pat_2tonslab_uuid") then
+	if uuid ~= math.pat_2tonslab_uuid then
 		pane.dismiss()
 	end
 end

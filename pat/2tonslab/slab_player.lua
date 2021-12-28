@@ -27,7 +27,7 @@ end
 
 function slabPane()
 	local uuid = sb.makeUuid()
-	player.setProperty("pat_2tonslab_uuid", uuid)
+	math.pat_2tonslab_uuid = uuid
 	
 	pane = root.assetJson("/pat/2tonslab/window/slab.sussy")
 	pane.uuid = uuid
