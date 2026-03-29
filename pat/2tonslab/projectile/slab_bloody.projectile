@@ -1,73 +1,73 @@
 {
-	"projectileName" : "pat_2tonslab_blood",
-	"image" : "slab_bloody.png",
-	"renderLayer" : "player+1",
-	"orientationLocked" : true,
-	"piercing" : true,
-	"speed" : 0,
-	"bounces" : -1,
-	"timeToLive" : 1.5,
-	
-	"damageType" : "NoDamage",
-	"onlyHitTerrain" : true,
-	
-	"movementSettings" : {
-		"gravityMultiplier" : 1,
-		"collisionEnabled" : true,
-		"speedLimit" : null,
-		"collisionPoly" : [ [0.1, 0.5], [0.1, -0.5], [-0.1, -0.5], [-0.1, 0.5] ]
-	},
-	
-	"actionOnCollision" : [
-		{
-			"action" : "sound",
-			"options" : ["/sfx/objects/rock_big_break1.ogg", "/sfx/objects/rock_big_break2.ogg", "/sfx/objects/rock_big_break3.ogg", "/sfx/objects/rock_big_break4.ogg", "/sfx/objects/rock_big_break5.ogg"]
-		},
-		{
-			"action" : "loop",
-			"count" : 6,
-			"body" : [{
-				"action" : "particle",
-				"specification" : {
-					"type" : "animated",
-					"animation" : "/animations/dust2/dust2.animation",
-					"layer" : "middle",
-					"position" : [1, 0],
-					"initialVelocity" : [10, -0.25],
-					"finalVelocity" : [0, 2.5],
-					"approach" : [2, 6],
-					"timeToLive" : 0.75,
-					"destructionTime" : 1.5,
-					"destructionAction" : "shrink",
-					"variance" : {
-						"initialVelocity" : [8, 0.5],
-						"finalVelocity" : [0, 2.5],
-						"position" : [1, 0.5]
-					}
-				}
-			},
-			{
-				"action" : "particle",
-				"specification" : {
-					"type" : "animated",
-					"animation" : "/animations/dust2/dust2.animation",
-					"layer" : "middle",
-					"position" : [1, 0],
-					"initialVelocity" : [-10, -0.25],
-					"finalVelocity" : [0, 2.5],
-					"approach" : [2, 6],
-					"timeToLive" : 0.75,
-					"destructionTime" : 1.5,
-					"destructionAction" : "shrink",
-					"variance" : {
-						"initialVelocity" : [8, 0.5],
-						"finalVelocity" : [0, 2.5],
-						"position" : [1, 0.5]
-					}
-				}
-			}]
-		}
-	],
-	
-	"scripts" : ["slab_projectile_base.lua"]
+  "projectileName" : "pat_2tonslab_blood",
+  "image" : "slab_bloody.png",
+  "renderLayer" : "player+1",
+  "orientationLocked" : true,
+  "piercing" : true,
+  "speed" : 0,
+  "bounces" : -1,
+  "timeToLive" : 1.5,
+  
+  "damageType" : "NoDamage",
+  "onlyHitTerrain" : true,
+  
+  "movementSettings" : {
+    "gravityMultiplier" : 1,
+    "collisionEnabled" : true,
+    "speedLimit" : null,
+    "collisionPoly" : [ [0.1, 0.5], [0.1, -0.5], [-0.1, -0.5], [-0.1, 0.5] ]
+  },
+  
+  "actionOnCollision" : [
+    {
+      "action" : "sound",
+      "options" : ["/sfx/objects/rock_big_break1.ogg", "/sfx/objects/rock_big_break2.ogg", "/sfx/objects/rock_big_break3.ogg", "/sfx/objects/rock_big_break4.ogg", "/sfx/objects/rock_big_break5.ogg"]
+    },
+    {
+      "action" : "loop",
+      "count" : 6,
+      "body" : [{
+        "action" : "particle",
+        "specification" : {
+          "type" : "animated",
+          "animation" : "/animations/dust2/dust2.animation",
+          "layer" : "middle",
+          "position" : [1, 0],
+          "initialVelocity" : [10, -0.25],
+          "finalVelocity" : [0, 2.5],
+          "approach" : [2, 6],
+          "timeToLive" : 0.75,
+          "destructionTime" : 1.5,
+          "destructionAction" : "shrink",
+          "variance" : {
+            "initialVelocity" : [8, 0.5],
+            "finalVelocity" : [0, 2.5],
+            "position" : [1, 0.5]
+          }
+        }
+      },
+      {
+        "action" : "particle",
+        "specification" : {
+          "type" : "animated",
+          "animation" : "/animations/dust2/dust2.animation",
+          "layer" : "middle",
+          "position" : [1, 0],
+          "initialVelocity" : [-10, -0.25],
+          "finalVelocity" : [0, 2.5],
+          "approach" : [2, 6],
+          "timeToLive" : 0.75,
+          "destructionTime" : 1.5,
+          "destructionAction" : "shrink",
+          "variance" : {
+            "initialVelocity" : [8, 0.5],
+            "finalVelocity" : [0, 2.5],
+            "position" : [1, 0.5]
+          }
+        }
+      }]
+    }
+  ],
+  
+  "scripts" : ["slab_projectile_base.lua"]
 }

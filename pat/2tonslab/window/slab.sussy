@@ -1,21 +1,21 @@
 {
-	"gui" : {
+  "gui" : {
     "pf" : {
       "type" : "panefeature",
       "anchor" : "bottomLeft",
       "offset" : [25, 120],
       "positionLocked" : true
     },
-		"bg" : {
+    "bg" : {
       "type" : "background",
       "fileHeader" : "/pat/2tonslab/window/slab.png?setcolor=0000?scale=0.2"
-		},
-		"background" : {
-			"type" : "image",
-			"file" : "/pat/2tonslab/window/slab.png",
-			"scale" : 0.2,
-			"mouseTransparent" : true
-		},
+    },
+    "background" : {
+      "type" : "image",
+      "file" : "/pat/2tonslab/window/slab.png",
+      "scale" : 0.2,
+      "mouseTransparent" : true
+    },
     "yes" : {
       "type" : "canvas",
       "rect" : [58, 4, 88, 24],
@@ -26,10 +26,10 @@
       "rect" : [108, 4, 138, 24],
       "captureMouseEvents" : true
     }
-	},
+  },
 
   "canvasClickCallbacks" : {"yes" : "clickYes", "no" : "clickNo"},
-	
-	"scripts" : ["/pat/2tonslab/window/slab_window.lua"],
-	"scriptDelta" : 1
+  
+  "scripts" : ["/pat/2tonslab/window/slab_window.lua"],
+  "scriptDelta" : 1
 }
