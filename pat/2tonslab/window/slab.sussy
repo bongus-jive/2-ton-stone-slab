@@ -17,19 +17,40 @@
       "scale": 0.2,
       "mouseTransparent": true
     },
-    "yes": {
+    "buttonYes": {
       "type": "canvas",
-      "rect": [ 58, 4, 88, 24 ],
-      "captureMouseEvents": true
+      "captureMouseEvents": true,
+      "position": [ 58, 4 ],
+      "size": [ 30, 20 ],
+      "data": {
+        "images": {
+          "base": "/pat/2tonslab/window/buttons.png:yes",
+          "hover": "/pat/2tonslab/window/buttons.png:yes_hover",
+          "press": "/pat/2tonslab/window/buttons.png:yes_push",
+          "scale": 0.2
+        }
+      }
     },
-    "no": {
+    "buttonNo": {
       "type": "canvas",
-      "rect": [ 108, 4, 138, 24 ],
-      "captureMouseEvents": true
+      "captureMouseEvents": true,
+      "position": [ 108, 4 ],
+      "size": [ 30, 20 ],
+      "data": {
+        "images": {
+          "base": "/pat/2tonslab/window/buttons.png:no",
+          "hover": "/pat/2tonslab/window/buttons.png:no_hover",
+          "press": "/pat/2tonslab/window/buttons.png:no_push",
+          "scale": 0.2
+        }
+      }
     }
   },
 
-  "canvasClickCallbacks": { "yes": "clickYes", "no": "clickNo" },
+  "canvasClickCallbacks": {
+    "buttonYes": "ButtonYes.CanvasClick",
+    "buttonNo": "ButtonNo.CanvasClick"
+  },
 
   "scripts": [ "/pat/2tonslab/window/slab_window.lua" ],
   "scriptDelta": 1

@@ -2,15 +2,9 @@ local uuid
 
 function init()
   uuid = config.getParameter("uuid")
-  
-  canvYes = {c = widget.bindCanvas("yes"), data = "pat_2tonslab_spawn"}
-  canvNo = {c = widget.bindCanvas("no")}
-  
-  function canvYes:draw(p) draw(self.c, "yes", p) end
-  function canvNo:draw(p) draw(self.c, "no", p) end
-  
-  canvYes:draw()
-  canvNo:draw()
+
+  ButtonYes = CanvasButton:new("buttonYes", clickYes)
+  ButtonNo = CanvasButton:new("buttonNo", pane.dismiss)
 end
 
 function update()
@@ -18,36 +12,61 @@ function update()
   if pid == 0 or world.sendEntityMessage(pid, "pat_2tonslab_paneClose", uuid):result() then
     pane.dismiss()
   end
+
+  ButtonYes:update()
+  ButtonNo:update()
+  CanvasButton.screenPosition = nil
 end
 
-function draw(canvas, image, a)
-  canvas:clear()
-  canvas:drawImage("/pat/2tonslab/window/buttons.png:"..image..(a and "_push" or ""), {0, 0}, 0.2)
+function cursorOverride(screenPosition)
+  CanvasButton.screenPosition = screenPosition
 end
 
-function click(canvas, position, button, isButtonDown)
+function clickYes()
+  world.sendEntityMessage(player.id(), "pat_2tonslab_spawn")
+  pane.dismiss()
+end
+
+CanvasButton = {}
+function CanvasButton:new(widgetName, callback)
+  local new = setmetatable({}, { __index = self })
+
+  new.widgetName = widgetName
+  new.callback = callback
+  new.canvas = widget.bindCanvas(widgetName)
+
+  local data = widget.getData(widgetName)
+  new.images = data.images
+
+  new.CanvasClick = function(...) new:click(...) end
+
+  return new
+end
+
+function CanvasButton:update()
+  local hovering = self.screenPosition and widget.inMember(self.widgetName, self.screenPosition)
+
+  if not hovering and self.pressed then self.pressed = false end
+  
+  local image = self.images.base
+  if self.pressed then
+    image = self.images.press
+  elseif hovering then
+    image = self.images.hover
+  end
+
+  self.canvas:clear()
+  self.canvas:drawImage(image, {0, 0}, self.images.scale)
+end
+
+function CanvasButton:click(_, button, down)
   if button ~= 0 then return end
-  
-  local size = canvas.c:size()
-  local inButton = position[1] > 0 and position[1] <= size[1] and position[2] > 0 and position[2] <= size[2]
-  
-  if isButtonDown and inButton then
+
+  if down then
     pane.playSound("/pat/2tonslab/window/click.ogg", 0, 0.75)
-  end
-  
-  if not isButtonDown or inButton then
-    canvas:draw(isButtonDown)
-    
-    if not isButtonDown and canvas.lastButtonDown and inButton then
-      if canvas.data then
-        world.sendEntityMessage(player.id(), canvas.data)
-      end
-      pane.dismiss()
-    end
-    
-    canvas.lastButtonDown = isButtonDown
+    self.pressed = true
+  elseif self.pressed then
+    self.callback()
+    self.pressed = false
   end
 end
-
-function clickYes(...) click(canvYes, ...) end
-function clickNo(...) click(canvNo, ...) end
