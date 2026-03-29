@@ -1,3 +1,5 @@
+local paneCfg = { baseConfig = "/pat/2tonslab/window/slab.sussy" }
+
 function init()
   openPane()
 
@@ -14,12 +16,9 @@ function init()
 end
 
 function openPane()
-  local uuid = sb.makeUuid()
-  math.pat_2tonslab_uuid = uuid
-
-  local pane = root.assetJson("/pat/2tonslab/window/slab.sussy")
-  pane.uuid = uuid
-  player.interact("ScriptPane", pane)
+  paneCfg.uuid = sb.makeUuid()
+  math.pat_2tonslab_uuid = paneCfg.uuid
+  player.interact("ScriptPane", paneCfg)
 end
 
 function spawnSlab()
