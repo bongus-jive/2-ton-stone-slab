@@ -1,15 +1,16 @@
 {
   "gui": {
-    "pf": {
+    "_panefeature": {
       "type": "panefeature",
       "anchor": "bottomLeft",
       "offset": [ 25, 120 ],
       "positionLocked": true
     },
-    "bg": {
+    "_background": {
       "type": "background",
       "fileHeader": "/pat/2tonslab/window/slab.png?setcolor=0000?scale=0.2"
     },
+
     "background": {
       "type": "image",
       "file": "/pat/2tonslab/window/slab.png",
