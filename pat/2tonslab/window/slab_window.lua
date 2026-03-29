@@ -1,3 +1,5 @@
+local uuid
+
 function init()
   uuid = config.getParameter("uuid")
   
@@ -11,8 +13,9 @@ function init()
   canvNo:draw()
 end
 
-function update(dt)
-  if uuid ~= math.pat_2tonslab_uuid then
+function update()
+  local pid = player.id()
+  if pid == 0 or world.sendEntityMessage(pid, "pat_2tonslab_paneClose", uuid):result() then
     pane.dismiss()
   end
 end

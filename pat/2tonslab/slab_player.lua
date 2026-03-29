@@ -11,14 +11,19 @@ function init()
   end
 
   setHandler("pat_2tonslab_pane", openPane)
+  setHandler("pat_2tonslab_paneClose", shouldClose, true)
   setHandler("pat_2tonslab_spawn", spawnSlab, true)
   setHandler("pat_2tonslab_kill", killPlayer, true)
 end
 
 function openPane()
   paneCfg.uuid = sb.makeUuid()
-  math.pat_2tonslab_uuid = paneCfg.uuid
   player.interact("ScriptPane", paneCfg)
+end
+
+function shouldClose(paneId)
+  if not paneCfg.uuid then paneCfg.uuid = paneId end
+  return paneId ~= paneCfg.uuid
 end
 
 function spawnSlab()
