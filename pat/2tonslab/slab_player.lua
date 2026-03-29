@@ -1,7 +1,8 @@
 local paneCfg = { baseConfig = "/pat/2tonslab/window/slab.sussy" }
 
 function init()
-  openPane()
+  local chance = root.assetJson("/pat/2tonslab/window/slab.sussy:initChance")
+  if math.random() < chance then openPane() end
 
   local function setHandler(name, func, localOnly)
     message.setHandler(name, function(_, isLocal, ...)
