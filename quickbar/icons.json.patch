@@ -5,7 +5,7 @@
     "value": {
       "label": "A Deal",
       "icon": "/pat/2tonslab/icon.png",
-      "action" : [ "exec", "/pat/2tonslab/quickbar.lua" ]
+      "action": [ "exec", "/pat/2tonslab/quickbar.lua" ]
     }
   }
 ]

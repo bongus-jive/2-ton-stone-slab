@@ -1,69 +1,71 @@
 {
-  "projectileName" : "pat_2tonslab",
-  "image" : "slab.png",
-  "renderLayer" : "player+1",
-  "orientationLocked" : true,
-  "piercing" : true,
-  "speed" : 0,
-  "bounces" : -1,
-  "timeToLive" : 1.5,
-  
-  "damageType" : "IgnoresDef",
-  "damageTeam" : {"type" : "indiscriminate"},
-  "damagePoly" : [ [24, 4], [24, -4], [-24, -4], [-24, 4] ],
-  
-  "movementSettings" : {
-    "gravityMultiplier" : 1,
-    "collisionEnabled" : false,
-    "speedLimit" : null,
-    "collisionPoly" : [ [0.1, 0.5], [0.1, -0.5], [-0.1, -0.5], [-0.1, 0.5] ]
+  "projectileName": "pat_2tonslab",
+  "image": "slab.png",
+  "renderLayer": "player+1",
+  "orientationLocked": true,
+  "piercing": true,
+  "speed": 0,
+  "bounces": -1,
+  "timeToLive": 1.5,
+
+  "damageType": "IgnoresDef",
+  "damageTeam": { "type": "indiscriminate" },
+  "damagePoly": [ [ 24, 4 ], [ 24, -4 ], [ -24, -4 ], [ -24, 4 ] ],
+
+  "movementSettings": {
+    "gravityMultiplier": 1,
+    "collisionEnabled": false,
+    "speedLimit": null,
+    "collisionPoly": [ [ 0.1, 0.5 ], [ 0.1, -0.5 ], [ -0.1, -0.5 ], [ -0.1, 0.5 ] ]
   },
-  
-  "actionOnCollision" : [
+
+  "actionOnCollision": [
     {
-      "action" : "sound",
-      "options" : ["/sfx/objects/rock_big_break1.ogg", "/sfx/objects/rock_big_break2.ogg", "/sfx/objects/rock_big_break3.ogg", "/sfx/objects/rock_big_break4.ogg", "/sfx/objects/rock_big_break5.ogg"]
+      "action": "sound",
+      "options": [ "/sfx/objects/rock_big_break1.ogg", "/sfx/objects/rock_big_break2.ogg", "/sfx/objects/rock_big_break3.ogg", "/sfx/objects/rock_big_break4.ogg", "/sfx/objects/rock_big_break5.ogg" ]
     }
   ],
-  
-  "actionOnHitTarget" : [
+
+  "actionOnHitTarget": [
     {
-      "action" : "sound",
-      "options" : ["/sfx/melee/blunt_kill_organic1.ogg"]
+      "action": "sound",
+      "options": [ "/sfx/melee/blunt_kill_organic1.ogg" ]
     },
     {
-      "action" : "projectile",
-      "type" : "pat_2tonslab_blood",
-      "keepVelocity" : true
+      "action": "projectile",
+      "type": "pat_2tonslab_blood",
+      "keepVelocity": true
     },
     {
-      "action" : "loop",
-      "count" : 128,
-      "body" : [{
-        "action" : "particle",
-        "rotate" : true,
-        "specification" : {
-          "type" : "ember",
-          "size" : 1.5,
-          "color" : [200, 0, 0, 255],
-          "position" : [0, -0.5],
-          "initialVelocity" : [0, -5],
-          "finalVelocity" : [0, -25],
-          "approach" : [10, 25],
-          "timeToLive" : 0,
-          "destructionTime" : 10,
-          "destructionAction" : "shrink",
-          "collidesForeground" : true,
-          "layer" : "middle",
-          "variance" : {
-            "size" : 0.5,
-            "initialVelocity" : [50, 10],
-            "destructionTime" : 5
+      "action": "loop",
+      "count": 128,
+      "body": [
+        {
+          "action": "particle",
+          "rotate": true,
+          "specification": {
+            "type": "ember",
+            "size": 1.5,
+            "color": [ 200, 0, 0, 255 ],
+            "position": [ 0, -0.5 ],
+            "initialVelocity": [ 0, -5 ],
+            "finalVelocity": [ 0, -25 ],
+            "approach": [ 10, 25 ],
+            "timeToLive": 0,
+            "destructionTime": 10,
+            "destructionAction": "shrink",
+            "collidesForeground": true,
+            "layer": "middle",
+            "variance": {
+              "size": 0.5,
+              "initialVelocity": [ 50, 10 ],
+              "destructionTime": 5
+            }
           }
         }
-      }]
+      ]
     }
   ],
-  
-  "scripts" : ["slab_projectile.lua"]
+
+  "scripts": [ "slab_projectile.lua" ]
 }
