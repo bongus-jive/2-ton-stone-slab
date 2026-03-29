@@ -1,7 +1,7 @@
 function init()
   uuid = config.getParameter("uuid")
   
-  canvYes = {c = widget.bindCanvas("yes"), data = "spawn"}
+  canvYes = {c = widget.bindCanvas("yes"), data = "pat_2tonslab_spawn"}
   canvNo = {c = widget.bindCanvas("no")}
   
   function canvYes:draw(p) draw(self.c, "yes", p) end
@@ -37,7 +37,7 @@ function click(canvas, position, button, isButtonDown)
     
     if not isButtonDown and canvas.lastButtonDown and inButton then
       if canvas.data then
-        world.sendEntityMessage(player.id(), "pat_2tonslab", canvas.data)
+        world.sendEntityMessage(player.id(), canvas.data)
       end
       pane.dismiss()
     end

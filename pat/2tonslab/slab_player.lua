@@ -1,34 +1,41 @@
 function init()
-  slabPane()
-  message.setHandler("pat_2tonslab_pane", slabPane)
+  openPane()
 
-  message.setHandler("pat_2tonslab", function(_, isLocal, a)
-    if isLocal then
-      if a == "spawn" then
-        local m = mcontroller.position()
-        local y = math.min(m[2] + 150, world.size()[2] - 1)
+  local function setHandler(name, func, localOnly)
+    message.setHandler(name, function(_, isLocal, ...)
+      if localOnly and not isLocal then return end
+      return func(...)
+    end)
+  end
 
-        world.spawnProjectile("pat_2tonslab", { m[1], y }, player.id(), { 0, 0 }, false, { myNuts = math.huge })
-      elseif a == "kill" then
-        status.applySelfDamageRequest({
-          damage = status.resourceMax("health"),
-          damageType = "IgnoresDef",
-          damageSourceKind = "hammer",
-          sourceEntityId = player.id()
-        })
-        
-        status.addPersistentEffect("pat_2tonslab", { stat = "maxHealth", effectiveMultiplier = 0 })
-        status.clearPersistentEffects("pat_2tonslab")
-      end
-    end
-  end)
+  setHandler("pat_2tonslab_pane", openPane)
+  setHandler("pat_2tonslab_spawn", spawnSlab, true)
+  setHandler("pat_2tonslab_kill", killPlayer, true)
 end
 
-function slabPane()
+function openPane()
   local uuid = sb.makeUuid()
   math.pat_2tonslab_uuid = uuid
 
-  pane = root.assetJson("/pat/2tonslab/window/slab.sussy")
+  local pane = root.assetJson("/pat/2tonslab/window/slab.sussy")
   pane.uuid = uuid
   player.interact("ScriptPane", pane)
+end
+
+function spawnSlab()
+  local pos = mcontroller.position()
+  pos[2] = math.min(pos[2] + 150, world.size()[2] - 1)
+  world.spawnProjectile("pat_2tonslab", pos, player.id(), nil, nil, { myNuts = math.huge })
+end
+
+function killPlayer()
+  status.applySelfDamageRequest({
+    damage = status.resourceMax("health"),
+    damageType = "IgnoresDef",
+    damageSourceKind = "hammer",
+    sourceEntityId = player.id()
+  })
+
+  status.addPersistentEffect("pat_2tonslab", { stat = "maxHealth", effectiveMultiplier = 0 })
+  status.clearPersistentEffects("pat_2tonslab")
 end

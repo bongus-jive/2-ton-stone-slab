@@ -24,7 +24,7 @@ function hit(id)
   if id == target and not targetHit then
     targetHit = true
     hitAction()
-    world.sendEntityMessage(target, "pat_2tonslab", "kill")
+    world.sendEntityMessage(target, "pat_2tonslab_kill")
   end
 end
 
