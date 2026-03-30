@@ -6,7 +6,7 @@
   "piercing": true,
   "speed": 0,
   "bounces": -1,
-  "timeToLive": 5,
+  "timeToLive": 15,
 
   "damageType": "NoDamage",
   "onlyHitTerrain": true,
