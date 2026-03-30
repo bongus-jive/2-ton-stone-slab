@@ -6,7 +6,7 @@
   "piercing": true,
   "speed": 0,
   "bounces": -1,
-  "timeToLive": 1.5,
+  "timeToLive": 5,
 
   "damageType": "NoDamage",
   "onlyHitTerrain": true,
@@ -18,7 +18,7 @@
     "collisionPoly": [ [ 0.1, 0.5 ], [ 0.1, -0.5 ], [ -0.1, -0.5 ], [ -0.1, 0.5 ] ]
   },
 
-  "actionOnCollision": [
+  "actionOnCollide": [
     {
       "action": "sound",
       "options": [ "/sfx/objects/rock_big_break1.ogg", "/sfx/objects/rock_big_break2.ogg", "/sfx/objects/rock_big_break3.ogg", "/sfx/objects/rock_big_break4.ogg", "/sfx/objects/rock_big_break5.ogg" ]
@@ -71,5 +71,48 @@
     }
   ],
 
-  "scripts": [ "slab_projectile_base.lua" ]
+  "periodicActions": [
+    {
+      "action": "actions",
+      "time": 0,
+      "repeat": false,
+      "list": [
+        {
+          "action": "loop",
+          "count": 128,
+          "body": [
+            {
+              "action": "particle",
+              "rotate": true,
+              "specification": {
+                "type": "ember",
+                "size": 1.5,
+                "color": [ 200, 0, 0, 255 ],
+                "position": [ 0, -0.5 ],
+                "initialVelocity": [ 0, -3 ],
+                "finalVelocity": [ 0, -25 ],
+                "approach": [ 10, 25 ],
+                "timeToLive": 0,
+                "destructionTime": 10,
+                "destructionAction": "shrink",
+                "collidesForeground": true,
+                "layer": "middle",
+                "variance": {
+                  "size": 0.5,
+                  "initialVelocity": [ 50, 10 ],
+                  "destructionTime": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "action": "sound",
+          "options": [ "/sfx/melee/blunt_kill_organic1.ogg" ]
+        }
+      ]
+    }
+  ],
+
+  "scripts": [ "slab_bloody.lua" ]
 }
