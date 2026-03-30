@@ -19,5 +19,6 @@
     "collisionPoly": [ [ 0.1, 0.5 ], [ 0.1, -0.5 ], [ -0.1, -0.5 ], [ -0.1, 0.5 ] ]
   },
 
-  "scripts": [ "slab.lua" ]
+  "scripts": [ "slab.lua" ],
+  "startYVelocity": -25
 }

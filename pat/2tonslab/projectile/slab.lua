@@ -2,10 +2,14 @@ local targetId
 local targetHit = false
 
 function init()
-  projectile.setPower(config.getParameter("myNuts", 0))
-  
   targetId = projectile.sourceEntity()
-  if not targetId then projectile.die() end
+  if not targetId then return projectile.die() end
+
+  projectile.setPower(config.getParameter("myNuts", 0))
+
+  if mcontroller.yVelocity() == 0 then
+    mcontroller.setYVelocity(config.getParameter("startYVelocity", 0))
+  end
 end
 
 function update()
