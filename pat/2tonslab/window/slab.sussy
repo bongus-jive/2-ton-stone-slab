@@ -55,5 +55,5 @@
   "scripts": [ "/pat/2tonslab/window/slab_window.lua" ],
   "scriptDelta": 1,
 
-  "initChance": 0.02
+  "initChance": 0.05
 }
