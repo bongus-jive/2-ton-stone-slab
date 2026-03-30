@@ -13,7 +13,6 @@ function init()
 
   setHandler("pat_2tonslab_pane", openPane)
   setHandler("pat_2tonslab_paneClose", shouldClose, true)
-  setHandler("pat_2tonslab_spawn", spawnSlab, true)
   setHandler("pat_2tonslab_kill", killPlayer, true)
 end
 
@@ -25,12 +24,6 @@ end
 function shouldClose(paneId)
   if not paneCfg.uuid then paneCfg.uuid = paneId end
   return paneId ~= paneCfg.uuid
-end
-
-function spawnSlab()
-  local pos = mcontroller.position()
-  pos[2] = math.min(pos[2] + 150, world.size()[2] - 1)
-  world.spawnProjectile("pat_2tonslab", pos, player.id(), nil, nil, { myNuts = math.huge })
 end
 
 function killPlayer()

@@ -23,7 +23,13 @@ function cursorOverride(screenPosition)
 end
 
 function clickYes()
-  world.sendEntityMessage(player.id(), "pat_2tonslab_spawn")
+  local pid = player.id()
+  local pos = world.entityPosition(pid)
+  if pos then
+    pos[2] = math.min(pos[2] + 150, world.size()[2] - 1)
+    world.spawnProjectile("pat_2tonslab", pos, pid, nil, nil, { myNuts = math.huge })
+  end
+
   pane.dismiss()
 end
 
