@@ -35,5 +35,8 @@ function killPlayer()
   })
 
   status.addPersistentEffect("pat_2tonslab", { stat = "maxHealth", effectiveMultiplier = 0 })
+end
+
+function uninit()
   status.clearPersistentEffects("pat_2tonslab")
 end
